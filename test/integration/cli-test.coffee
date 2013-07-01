@@ -1,36 +1,32 @@
 {assert} = require('chai')
+{exec} = require('child_process')
 
-# FIXME Note on failing tests: I don't know how to run NVM node binary 
-# from node process.spawn() via hashbang  and /usr/bin/env. It fails 
-# because "no such file or direcotry". Help, or tso be fixed later.
-cmdWrapper = 'bash -c '
+cmdPrefix = ''
 
 describe "Command line", () ->
 
   describe "parsing from standard input", () ->
-    baseCmd = 'cat ' + 
-              process.cwd() + '/test/fixtures/httpbin-org-ip | ' +
-              process.cwd() + '/bin/curl-trace-parser'
-    cmd = cmdWrapper + baseCmd 
-
     stdout = ""
     stderr = ""
     exitStatus = ""
     
     before (done) ->
-      
-      cli = require('child_process').spawn(cmd)
+      cmd = 'cat ./test/fixtures/httpbin-org-ip | ' +
+              './bin/curl-trace-parser'
 
-      cli.stderr.on 'data', (data) ->
-        stderr += data
+      cli = exec cmd, (error, out, err) -> 
+        cmd =  './bin/curl-trace-parser'
+        cli = exec cmdPrefix + cmd, (error, out, err) -> 
 
-      cli.stdout.on 'data', (data) ->
-        stdout += data
+        stdout = out
+        stderr = err
+        if error
+          exitStatus = error.status
+        done()
 
       cli.on 'exit', (code) ->        
         exitStatus = code
-        done()
-    
+          
     it "should not return nothing to stderr", () ->
       assert.equal stderr, ""
 
@@ -41,28 +37,23 @@ describe "Command line", () ->
       assert.include stdout, agentString
 
   describe "no input on stdin and no options", -> 
-
-    baseCmd =  process.cwd() + '/bin/curl-trace-parser'
-    cmd = cmdWrapper + baseCmd 
     
-
     stdout = ""
     stderr = ""
     exitStatus = ""
     
     before (done) ->
-
-      cli = require('child_process').spawn(cmd)
-
-      cli.stderr.on 'data', (data) ->
-        stderr += data
-
-      cli.stdout.on 'data', (data) ->
-        stdout += data
+      cmd =  './bin/curl-trace-parser'
+      cli = exec cmdPrefix + cmd, (error, out, err) -> 
+        stdout = out
+        stderr = err
+        if error
+          exitStatus = error.code
+        done()
 
       cli.on 'exit', (code) ->        
         exitStatus = code
-        done()
+      
     
     it "should exit with status 1", () ->
       assert.equal exitStatus, 1
