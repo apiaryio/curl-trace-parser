@@ -2,8 +2,6 @@
 
 ![Circle CI status badge](https://circleci.com/gh/apiaryio/curl-trace-parser.png?circle-token=42b3d77605312e8c40381c714068415f7ca14d27) 
 
-[**SEE WHY TESTS ARE FAILING!!!**](https://github.com/apiaryio/curl-trace-parser/blob/master/test/integration/cli-test.coffee#L3)
-
 Did you know that you can record raw HTTP communication of [Curl command-line tool](http://curl.haxx.se/docs/manpage.html) with `--trace` and `--trace-ascii` option? It's the only way I know to get raw HTTP communication without using [`tcpdump`](http://www.tcpdump.org/) and/or [`wireshark`](http://www.wireshark.org/). 
 This trick is very useful for proper introspection into HTTP communication of some not-well documented RESTful API for example. 
 
