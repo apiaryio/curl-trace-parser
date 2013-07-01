@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+require('coffee-script');
+
+var cmd = require('commander');
+var parser = require('../src/parser.coffee');
+cmd.version('0.0.1');
+
+var stdin = "";
+
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+process.stdin.on('data', function(data) {
+  stdin += data;
+});
+
+process.stdin.on('end', function() {
+  parserOutput = parser.parseToRaw(stdin)
+  process.stdout.write(parserOutput);
+  process.exit(0)
+
+});
+
+// do not end unit stdin end
+var busyLoop = function() {
+  setTimeout( function() {
+    if(stdin == ""){
+      process.stderr.write("ERROR: No input on stdin after 1s. Exiting. \n");
+      process.exit(1)
+    }
+    busyLoop();
+  }, 1000);
+};
+busyLoop();

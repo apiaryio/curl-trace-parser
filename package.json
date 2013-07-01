@@ -1,0 +1,32 @@
+{
+  "name": "curl-trace-parser",
+  "version": "0.0.1",
+  "description": "Parse curl --trace option output to raw HTTP message",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers 'coffee:coffee-script' ./test/**/*-test.coffee"
+  },
+  "bin": {
+    "curl-trace-parser": "bin/curl-trace-parser"
+  },
+  "dependencies": {
+    "coffee-script": "1.6.3",
+    "commander":  "1.2.0"
+  },
+  "devDependencies": {
+    "mocha": "1.11.0",
+    "chai": "1.7.1"
+  },
+  "keywords": [
+    "curl",
+    "parse",
+    "trace",
+    "raw",
+    "http",
+    "message",
+    "request",
+    "repsponse"
+  ],
+  "author": "Adam Kliment <adam@apiary.io>",
+  "license": "NONE"
+}
