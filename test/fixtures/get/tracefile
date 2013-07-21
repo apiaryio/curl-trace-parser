@@ -1,0 +1,52 @@
+== Info: About to connect() to curltraceparser.apiary.io port 80 (#0)
+== Info:   Trying 54.235.100.115...
+== Info: connected
+== Info: Connected to curltraceparser.apiary.io (54.235.100.115) port 80 (#0)
+=> Send header, 169 bytes (0xa9)
+0000: 47 45 54 20 2f 73 68 6f 70 70 69 6e 67 2d 63 61 GET /shopping-ca
+0010: 72 74 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 65 rt HTTP/1.1..Use
+0020: 72 2d 41 67 65 6e 74 3a 20 63 75 72 6c 2f 37 2e r-Agent: curl/7.
+0030: 32 34 2e 30 20 28 78 38 36 5f 36 34 2d 61 70 70 24.0 (x86_64-app
+0040: 6c 65 2d 64 61 72 77 69 6e 31 32 2e 30 29 20 6c le-darwin12.0) l
+0050: 69 62 63 75 72 6c 2f 37 2e 32 34 2e 30 20 4f 70 ibcurl/7.24.0 Op
+0060: 65 6e 53 53 4c 2f 30 2e 39 2e 38 78 20 7a 6c 69 enSSL/0.9.8x zli
+0070: 62 2f 31 2e 32 2e 35 0d 0a 48 6f 73 74 3a 20 63 b/1.2.5..Host: c
+0080: 75 72 6c 74 72 61 63 65 70 61 72 73 65 72 2e 61 urltraceparser.a
+0090: 70 69 61 72 79 2e 69 6f 0d 0a 41 63 63 65 70 74 piary.io..Accept
+00a0: 3a 20 2a 2f 2a 0d 0a 0d 0a                      : */*....
+<= Recv header, 17 bytes (0x11)
+0000: 48 54 54 50 2f 31 2e 31 20 32 30 30 20 4f 4b 0d HTTP/1.1 200 OK.
+0010: 0a                                              .
+<= Recv header, 32 bytes (0x20)
+0000: 43 6f 6e 74 65 6e 74 2d 54 79 70 65 3a 20 61 70 Content-Type: ap
+0010: 70 6c 69 63 61 74 69 6f 6e 2f 6a 73 6f 6e 0d 0a plication/json..
+<= Recv header, 37 bytes (0x25)
+0000: 44 61 74 65 3a 20 53 75 6e 2c 20 32 31 20 4a 75 Date: Sun, 21 Ju
+0010: 6c 20 32 30 31 33 20 31 33 3a 32 33 3a 35 35 20 l 2013 13:23:55 
+0020: 47 4d 54 0d 0a                                  GMT..
+<= Recv header, 31 bytes (0x1f)
+0000: 58 2d 41 70 69 61 72 79 2d 52 61 74 65 6c 69 6d X-Apiary-Ratelim
+0010: 69 74 2d 4c 69 6d 69 74 3a 20 31 32 30 0d 0a    it-Limit: 120..
+<= Recv header, 35 bytes (0x23)
+0000: 58 2d 41 70 69 61 72 79 2d 52 61 74 65 6c 69 6d X-Apiary-Ratelim
+0010: 69 74 2d 52 65 6d 61 69 6e 69 6e 67 3a 20 31 31 it-Remaining: 11
+0020: 39 0d 0a                                        9..
+<= Recv header, 21 bytes (0x15)
+0000: 43 6f 6e 74 65 6e 74 2d 4c 65 6e 67 74 68 3a 20 Content-Length: 
+0010: 31 31 39 0d 0a                                  119..
+<= Recv header, 24 bytes (0x18)
+0000: 43 6f 6e 6e 65 63 74 69 6f 6e 3a 20 6b 65 65 70 Connection: keep
+0010: 2d 61 6c 69 76 65 0d 0a                         -alive..
+<= Recv header, 2 bytes (0x2)
+0000: 0d 0a                                           ..
+<= Recv data, 119 bytes (0x77)
+0000: 7b 20 22 69 74 65 6d 73 22 3a 20 5b 0a 7b 20 22 { "items": [.{ "
+0010: 75 72 6c 22 3a 20 22 2f 73 68 6f 70 70 69 6e 67 url": "/shopping
+0020: 2d 63 61 72 74 2f 31 22 2c 20 22 70 72 6f 64 75 -cart/1", "produ
+0030: 63 74 22 3a 22 32 5a 59 34 38 58 50 5a 22 2c 20 ct":"2ZY48XPZ", 
+0040: 22 71 75 61 6e 74 69 74 79 22 3a 20 31 2c 20 22 "quantity": 1, "
+0050: 6e 61 6d 65 22 3a 20 22 4e 65 77 20 73 6f 63 6b name": "New sock
+0060: 73 22 2c 20 22 70 72 69 63 65 22 3a 20 31 2e 32 s", "price": 1.2
+0070: 35 20 7d 0a 5d 20 7d                            5 }.] }
+== Info: Connection #0 to host curltraceparser.apiary.io left intact
+== Info: Closing connection #0

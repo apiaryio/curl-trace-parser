@@ -8,8 +8,8 @@ describe "Javascript API", () ->
   describe "parsing from file", () ->
     
     it "should return expected raw HTTP", (done) ->
-      traceFilePath = "./test/fixtures/httpbin-org-ip"
-      expectedOutputPath = "./test/fixtures/expected-output"
+      traceFilePath = "./test/fixtures/get/tracefile"
+      expectedOutputPath = "./test/fixtures/get/expected-output"
 
       fs.readFile traceFilePath, 'utf8', (err,trace) ->
         parsed = parse trace  

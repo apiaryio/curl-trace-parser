@@ -1,3 +1,4 @@
+fs = require('fs')
 {assert} = require('chai')
 {exec} = require('child_process')
 
@@ -11,7 +12,7 @@ describe "Command line", () ->
     exitStatus = ""
     
     before (done) ->
-      cmd = 'cat ./test/fixtures/httpbin-org-ip | ' +
+      cmd = 'cat ./test/fixtures/get/tracefile | ' +
               './bin/curl-trace-parser'
 
       cli = exec cmd, (error, out, err) -> 
@@ -32,9 +33,11 @@ describe "Command line", () ->
 
     it "should return with exit code 0", () ->
 
-    it "should return parsed body to standard output", () ->
-      agentString = "curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5"
-      assert.include stdout, agentString
+    it "should return parsed body to standard output", (done) ->
+      expectedOutputPath = "./test/fixtures/get/expected-output"
+      fs.readFile expectedOutputPath, 'utf8', (err,expected) ->      
+        assert.equal stdout, expected
+        done()
 
   describe "no input on stdin and no options", -> 
     
