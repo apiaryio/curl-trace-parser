@@ -1,11 +1,11 @@
 {
   "name": "curl-trace-parser",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
   "scripts": {
-    "test": "mocha --reporter spec --compilers 'coffee:coffee-script' ./test/**/*-test.coffee",
-    "prepublish": "scripts/build"
+    "test": "scripts/test",
+    "prepublish": "scripts/prepublish"
   },
   "bin": {
     "curl-trace-parser": "bin/curl-trace-parser"
