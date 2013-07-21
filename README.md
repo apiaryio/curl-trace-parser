@@ -1,6 +1,5 @@
 # Parser for output from Curl --trace option
 
-
 [![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.png)](https://travis-ci.org/apiaryio/curl-trace-parser)
 [![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.png)](https://david-dm.org/apiaryio/curl-trace-parser)
 [![devDependency Status](https://david-dm.org/apiaryio/curl-trace-parser/dev-status.png)](https://david-dm.org/apiaryio/curl-trace-parser#info=devDependencies)
@@ -50,8 +49,6 @@ The only glitch is that Curl `--trace` saves data in a bit obfuscated format. It
     $ npm install -g curl-trace-parser
 
 
-
-
-- - -    
+- - -
 
 NOTE: Quick and dirty, of course... 
