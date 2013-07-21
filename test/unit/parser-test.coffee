@@ -4,10 +4,10 @@ parser = require '../../src/parser'
 
 describe 'parser module', () ->
 
-  it "has parseToRaw() defined", () ->
-     assert.isFunction parser.parseToRaw
+  it "has parse() defined", () ->
+     assert.isFunction parser.parse
 
-  describe "parseToRaw() return", () ->
+  describe "parse() return", () ->
     output = ""
     trace = ""
 
@@ -16,7 +16,7 @@ describe 'parser module', () ->
         done err if err
         
         trace = data.toString()
-        output = parser.parseToRaw(trace)
+        output = parser.parse(trace)
         done()
 
     it "is string", () -> 

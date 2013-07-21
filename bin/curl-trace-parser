@@ -16,7 +16,7 @@ process.stdin.on('data', function(data) {
 });
 
 process.stdin.on('end', function() {
-  parserOutput = parser.parseToRaw(stdin)
+  parserOutput = parser.parse(stdin)
   process.stdout.write(parserOutput);
   process.exit(0)
 
