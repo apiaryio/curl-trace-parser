@@ -11,9 +11,12 @@ This trick is very useful for proper introspection into HTTP communication of so
 
 The only glitch is that Curl `--trace` saves data in a bit obfuscated format. It saves chunks as they come and splits them by packets. If you want to decode it back to human readeble format this parser is your friend. Delivered as Node.js package, so far.
 
+## Record your first trace file
+    
+    $ curl -s -o /dev/null --trace tracefile http://httpbin.org/headers
+
 ## Command-line interface
 
-    $ curl -s -o /dev/null --trace tracefile http://httpbin.org/headers
     $ cat tracefile | curl-trace-parser
     GET /headers HTTP/1.1
     User-Agent: curl/7.21.4 (universal-apple-darwin11.0) libcurl/7.21.4 OpenSSL/0.9.8r zlib/1.2.5
@@ -38,11 +41,12 @@ The only glitch is that Curl `--trace` saves data in a bit obfuscated format. It
 
 
 ## Node.JS API
-   var fs = require('fs');
-   var parser = require('curl-trace-parser');
-   fs.readFile('./curl_trace_file', 'utf8', function (err,trace) {
-     console.log(parser.parse(trace));
-   })
+
+    var fs = require('fs');
+    var parser = require('curl-trace-parser');
+    fs.readFile('./tracefile', 'utf8', function (err,trace) {
+      console.log(parser.parse(trace));
+    })
 
 ## Installation
 
