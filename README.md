@@ -69,7 +69,7 @@ Curl example iss pasted from [Apiary interactive API documentation][example].
 
 ## Output format (TBD)
 
-Output is ASCII representation of raw [HTTP message] with few modifications:
+Output is ASCII representation of raw [HTTP message][message] with few modifications:
 
 - Both Request and Response has extra trailing CR+LF
 
