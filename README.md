@@ -1,10 +1,10 @@
-# Parser for output from cURL --trace option
+# The `cURL --trace` parser
 
 [![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.png)](https://travis-ci.org/apiaryio/curl-trace-parser)
 [![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.png)](https://david-dm.org/apiaryio/curl-trace-parser)
 [![devDependency Status](https://david-dm.org/apiaryio/curl-trace-parser/dev-status.png)](https://david-dm.org/apiaryio/curl-trace-parser#info=devDependencies)
 
-# API NOT STABLE, YET!
+### API NOT STABLE, YET!
 
 ## The story
 
