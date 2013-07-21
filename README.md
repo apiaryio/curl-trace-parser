@@ -1,4 +1,3 @@
-
 # Parser for output from Curl --trace option
 
 [![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.png)](https://travis-ci.org/apiaryio/curl-trace-parser)
@@ -30,7 +29,7 @@ For example purposes I created [API documentation an API mock][apiarydoc] on Api
      --data-binary "{ \"product\":\"1AB23ORM\", \"quantity\": 2 }" \
      "http://curltraceparser.apiary.io/shopping-cart"
 
-Curl example iss pasted from [Apiary interactive API documentation][example].
+Curl example is pasted from [Apiary interactive API documentation][example].
 
 [example]: http://docs.curltraceparser.apiary.io/#get-%2Fshopping-cart
 
