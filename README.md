@@ -1,4 +1,4 @@
-# The `cURL --trace` parser
+# The `curl --trace` parser
 
 [![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.png)](https://travis-ci.org/apiaryio/curl-trace-parser)
 [![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.png)](https://david-dm.org/apiaryio/curl-trace-parser)
