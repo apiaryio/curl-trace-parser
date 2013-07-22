@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-require('coffee-script');
-
 var cmd = require('commander');
-var parser = require('../src/parser.coffee');
+var parser = require('../lib/parser');
 cmd.version('0.0.1');
 
 var stdin = "";
