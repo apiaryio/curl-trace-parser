@@ -44,22 +44,23 @@ Note this cURL example is copied and pasted from [Apiary interactive API documen
 
 ```bash
 $ cat tracefile | curl-trace-parser
-GET /shopping-cart HTTP/1.1
-User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
-Host: curltraceparser.apiary.io
-Accept: */*
+> GET /shopping-cart HTTP/1.1
+> User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
+> Host: curltraceparser.apiary.io
+> Accept: */*
+>
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-Date: Sun, 21 Jul 2013 13:23:55 GMT
-X-Apiary-Ratelimit-Limit: 120
-X-Apiary-Ratelimit-Remaining: 119
-Content-Length: 119
-Connection: keep-alive
-
-{ "items": [
-{ "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
-] }
+< HTTP/1.1 200 OK
+< Content-Type: application/json
+< Date: Sun, 21 Jul 2013 13:23:55 GMT
+< X-Apiary-Ratelimit-Limit: 120
+< X-Apiary-Ratelimit-Remaining: 119
+< Content-Length: 119
+< Connection: keep-alive
+<
+< { "items": [
+< { "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
+< ] }
 ```
 
 ## Parse the trace file using Node.JS
@@ -72,10 +73,13 @@ fs.readFile('./tracefile', 'utf8', function (err,trace) {
 })
 ```
 
-## Output format (TBD)
+## Output format
 
 The output is ASCII representation of a raw [HTTP message][message] with few modifications:
 
-- Both Request and Response has extra trailing CR+LF
+- Request line begins with `> `
+- Response line begins with `< `
+- Request and Response is delimited by line containing only LF
+- Both Request and Response has an extra trailing CR+LF
 
 [message]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html
