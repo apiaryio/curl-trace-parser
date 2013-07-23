@@ -83,7 +83,7 @@ The output is ASCII representation of a raw [HTTP message][message] with few mod
 - Request and response is delimited by CR+LF
 - Both Request and Response are terminated by an extra trailing LF
 
-## Output format reverse parser Node.JS exapmle
+## Output format reverse parser 
 
 ```javascript
 var fs = require('fs');
