@@ -14,10 +14,9 @@ process.stdin.on('data', function(data) {
 });
 
 process.stdin.on('end', function() {
-  parserOutput = parser.parse(stdin)
+  parserOutput = parser.parseToString(stdin)
   process.stdout.write(parserOutput);
   process.exit(0)
-
 });
 
 // do not end unit stdin end

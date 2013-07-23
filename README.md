@@ -48,6 +48,7 @@ $ cat tracefile | curl-trace-parser
 > User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
 > Host: curltraceparser.apiary.io
 > Accept: */*
+> 
 >
 
 < HTTP/1.1 200 OK
@@ -69,7 +70,7 @@ $ cat tracefile | curl-trace-parser
 var fs = require('fs');
 var parser = require('curl-trace-parser');
 fs.readFile('./tracefile', 'utf8', function (err,trace) {
-  console.log(parser.parse(trace));
+  console.log(parser.parseToString(trace));
 })
 ```
 
@@ -79,7 +80,18 @@ The output is ASCII representation of a raw [HTTP message][message] with few mod
 
 - Request line begins with `> `
 - Response line begins with `< `
-- Request and Response is delimited by line containing only LF
-- Both Request and Response has an extra trailing CR+LF
+- Request and response is delimited by CR+LF
+- Both Request and Response are terminated by an extra trailing LF
+
+## Output format reverse parser Node.JS exapmle
+
+```javascript
+var fs = require('fs');
+var parser = require('curl-trace-parser');
+fs.readFile('./tracefile', 'utf8', function (err,trace) {
+  console.log(parser.parseBack(trace));
+})
+```
 
 [message]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html
+

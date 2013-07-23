@@ -51,15 +51,56 @@ parse = (trace) ->
     for code in codes 
       stringBuffer[dir].push String.fromCharCode code
  
+  output = {}
+  output['request'] = stringBuffer['request'].join ""
+  output['response'] = stringBuffer['response'].join ""
+  output
 
+
+parseToString = (trace) ->
+  message = parse(trace)
   output = ""
-  output += stringBuffer['request'].join ""
+  
+  request = []
+  requestLines = message['request'].split "\r\n"
+  for line in requestLines
+    request.push "> " + line 
+  output += request.join "\r\n"
+  output += "\n"
   output += "\r\n"
-  output += stringBuffer['response'].join ""
-  output += "\r\n"
+  response = []
+  responseLines = message['response'].split "\r\n"
+  for line in responseLines
+    response.push "< " + line 
+  output += response.join "\r\n"
+  output += "\n"
   output
 
 
 
+parseBackRequestAndResponseFromString = (string) ->
+  output = {}
+  
+  request = []
+  stringLines = string.split('\r\n')
+  for line in stringLines
+    request.push line.replace /^> /, '' if /^> /.test line
+  
+  #removing trailing LF
+  output['request'] = request.join('\r\n').replace /\n$/, ''
+
+  response = []
+  for line in stringLines
+    response.push line.replace /^< /, '' if /^< /.test line
+  
+  #removing trailing LF
+  output['response'] = response.join('\r\n').replace /\n$/, ''
+
+  output
+
+
+module.exports.parseBackRequestAndResponseFromString = parseBackRequestAndResponseFromString
+module.exports.parseBack = parseBackRequestAndResponseFromString
+module.exports.parseToString = parseToString
 module.exports.parse = parse
 
