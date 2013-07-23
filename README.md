@@ -10,7 +10,7 @@
 Did you know that you can record raw HTTP communication of [Curl command-line tool](http://curl.haxx.se/docs/manpage.html) with the `--trace` and `--trace-ascii` option? It's the only way I know to get raw HTTP communication without using the [`tcpdump`](http://www.tcpdump.org/) or [`wireshark`](http://www.wireshark.org/). 
 For example, this trick is very useful for the proper introspection into HTTP communication of an undocumented RESTful API.
 
-The only glitch is that cURL `--trace` saves data in its [not human-friendly format][gist] saving chunks as they are being received and splitting them by packets. If you want to decode it back to a human readable format this parser is what you need. Delivered as a Node.js package. 
+The only glitch is that cURL `--trace` saves data in [its custom format][gist], far from human-friendly, saving chunks as they are being received and splitting them by packets. If you want a human readable form then this parser is what you need. Delivered as a Node.js package. 
 
 [gist]: https://gist.github.com/netmilk/6048533
 
