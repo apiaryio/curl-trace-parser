@@ -14,6 +14,12 @@ The only glitch is that cURL `--trace` saves data in [its custom format][gist], 
 
 [gist]: https://gist.github.com/netmilk/6048533
 
+## Usage
+
+```
+$ curl --trace - http://httpbin.org/ip | curl-trace-parser
+```
+
 ## Example
 
 We will be using this [sample API][apiarydoc] created with the [Apiary.io mock server](http://apiary.io) to demonstrate tracing an HTTP communication and the use of the cURL trace parser.
@@ -91,6 +97,12 @@ fs.readFile('./tracefile', 'utf8', function (err,trace) {
   console.log(parser.parseBack(trace));
 })
 ```
+
+## API Reference
+
+`parse(traceString)`
+
+``
 
 [message]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html
 
