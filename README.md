@@ -100,9 +100,13 @@ fs.readFile('./tracefile', 'utf8', function (err,trace) {
 
 ## API Reference
 
-`parse(traceString)`
+`parse(traceString)` - parse string with trace to object with raw request and response
 
-``
+`parseToString(traceString)` - parse string with trace to [output format]
 
+`parseBack(outputString)` - parse string with [output format] back to object with raw request an resposne 
+
+
+[output format]: https://github.com/apiaryio/curl-trace-parser#output-format
 [message]: http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html
 
