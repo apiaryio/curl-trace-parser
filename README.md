@@ -88,6 +88,8 @@ The output is ASCII representation of a raw [HTTP message][message] with few mod
 - Request and response is delimited by CR+LF
 - Both Request and Response are terminated by an extra trailing LF
 
+Note: This is little bit tricky because HTTP RFC does not have declared delimiter for Request and Response, for obvious reasons. 
+
 ## Output format reverse parser 
 
 ```javascript
