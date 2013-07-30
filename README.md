@@ -45,15 +45,15 @@ Note this cURL example is copied and pasted from [Apiary interactive API documen
 
 [example]: http://docs.curltraceparser.apiary.io/#get-%2Fshopping-cart
 
-## Exapmles
+## Examples
 
-### `--raw` output foramt
+### `--raw` format
 
 The output is ASCII representation of a raw [HTTP message][message] with few modifications:
 
 - Request line begins with `> `
 - Response line begins with `< `
-- Request and response is delimited by CR+LF
+- Request and Response is delimited by CR+LF
 - Both Request and Response are terminated by an extra trailing LF
 
 Note: This is little bit tricky because HTTP RFC does not have declared delimiter for Request and Response, for obvious reasons. 
@@ -80,11 +80,11 @@ $ cat tracefile | curl-trace-parser --raw
 < { "status": "created", "url": "/shopping-cart/2" }
 ```
 
-### `--blueprint` output format
+### `--blueprint` format
 
-The output is HTTP Request and Response in the [API blueprint format](http://apiblueprint.org)
+The output is HTTP Request and Response in the [API blueprint format](http://apiblueprint.org) which is the superset of markdown.
 
-```bash
+```
 $ cat tracefile | ./bin/curl-trace-parser --blueprint
 # POST /shopping-cart
 + Request
