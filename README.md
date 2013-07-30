@@ -20,7 +20,7 @@ The only glitch is that cURL `--trace` saves data in [its custom format][gist], 
 $ curl --trace - http://httpbin.org/ip | curl-trace-parser
 ```
 
-## Example
+## Sample API
 
 We will be using this [sample API][apiarydoc] created with the [Apiary.io mock server](http://apiary.io) to demonstrate tracing an HTTP communication and the use of the cURL trace parser.
 
@@ -45,50 +45,88 @@ Note this cURL example is copied and pasted from [Apiary interactive API documen
 
 [example]: http://docs.curltraceparser.apiary.io/#get-%2Fshopping-cart
 
-## Parse the trace file from command line
+## Examples
 
-```bash
-$ cat tracefile | curl-trace-parser
-> GET /shopping-cart HTTP/1.1
-> User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
-> Host: curltraceparser.apiary.io
-> Accept: */*
-> 
->
-
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Date: Sun, 21 Jul 2013 13:23:55 GMT
-< X-Apiary-Ratelimit-Limit: 120
-< X-Apiary-Ratelimit-Remaining: 119
-< Content-Length: 119
-< Connection: keep-alive
-<
-< { "items": [
-< { "url": "/shopping-cart/1", "product":"2ZY48XPZ", "quantity": 1, "name": "New socks", "price": 1.25 }
-< ] }
-```
-
-## Parse the trace file using Node.JS
-
-```javascript
-var fs = require('fs');
-var parser = require('curl-trace-parser');
-fs.readFile('./tracefile', 'utf8', function (err,trace) {
-  console.log(parser.parseToString(trace));
-})
-```
-
-## Output format
+### `--raw` format
 
 The output is ASCII representation of a raw [HTTP message][message] with few modifications:
 
 - Request line begins with `> `
 - Response line begins with `< `
-- Request and response is delimited by CR+LF
+- Request and Response is delimited by CR+LF
 - Both Request and Response are terminated by an extra trailing LF
 
 Note: This is little bit tricky because HTTP RFC does not have declared delimiter for Request and Response, for obvious reasons. 
+
+```bash
+$ cat tracefile | curl-trace-parser --raw
+> POST /shopping-cart HTTP/1.1
+> User-Agent: curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
+> Host: curltraceparser.apiary.io
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 39
+>
+> { "product":"1AB23ORM", "quantity": 2 }
+
+< HTTP/1.1 201 Created
+< Content-Type: application/json
+< Date: Tue, 30 Jul 2013 11:32:30 GMT
+< X-Apiary-Ratelimit-Limit: 120
+< X-Apiary-Ratelimit-Remaining: 119
+< Content-Length: 50
+< Connection: keep-alive
+<
+< { "status": "created", "url": "/shopping-cart/2" }
+```
+
+### `--blueprint` format
+
+The output is HTTP Request and Response in the [API blueprint format](http://apiblueprint.org) which is the superset of markdown.
+
+```
+$ cat tracefile | ./bin/curl-trace-parser --blueprint
+# POST /shopping-cart
++ Request
+    + Headers
+
+            User-Agent:curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5
+            Host:curltraceparser.apiary.io
+            Accept:*/*
+            Content-Type:application/json
+            Content-Length:39
+
+    + Body
+
+            { "product":"1AB23ORM", "quantity": 2 }
+
++ Response 201
+    + Headers
+
+            Content-Type:application/json
+            Date:Tue, 30 Jul 2013 11:32:30 GMT
+            X-Apiary-Ratelimit-Limit:120
+            X-Apiary-Ratelimit-Remaining:119
+            Content-Length:50
+            Connection:keep-alive
+
+    + Body
+
+            { "status": "created", "url": "/shopping-cart/2" }
+
+```
+
+Note: This format does not expect any CR+LF in body
+
+### Parse the trace to raw HTTP file using Node.JS
+
+```javascript
+var fs = require('fs');
+var parser = require('curl-trace-parser');
+fs.readFile('./tracefile', 'utf8', function (err,trace) {
+  console.log(parser.parse(trace));
+})
+```
 
 ## Output format reverse parser 
 
