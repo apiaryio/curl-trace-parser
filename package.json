@@ -1,6 +1,6 @@
 {
   "name": "curl-trace-parser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "curl-trace-parser": "bin/curl-trace-parser"
   },
   "dependencies": {
-    "commander":  "1.2.0"
+    "commander":  "1.2.0",
+    "api-blueprint-http-formatter": "0.0.1",
+    "http-string-parser": "0.0.4"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
@@ -26,7 +28,10 @@
     "http",
     "message",
     "request",
-    "repsponse"
+    "repsponse",
+    "api",
+    "blueprint",
+    "apiary"
   ],
   "author": "Adam Kliment <adam@apiary.io>",
   "license": "MIT",
