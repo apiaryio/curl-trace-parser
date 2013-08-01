@@ -116,7 +116,7 @@ $ cat tracefile | ./bin/curl-trace-parser --blueprint
 
 ```
 
-Note: This format does not expect any CR+LF in body
+Note: This format does not expect any CR+LF in the message body
 
 ### Parse the trace to raw HTTP file using Node.JS
 
