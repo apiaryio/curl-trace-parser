@@ -31,6 +31,11 @@ process.stdin.on('end', function() {
   }
   if(option == 'b' || option == '--blueprint'){
     var rawPair = curl.parse(stdin);
+    var response = rawPair['response'];
+    if (/transfer-encoding:\s*?chunked/gi.test(response)) {
+      var hexPattern = /\r\n[0-9a-f]{1,2}\r\n/gi;
+      rawPair['response'] = response.replace(hexPattern, '\r\n');
+    }
     parsedPair = {
       'request': http.parseRequest(rawPair['request']),
       'response': http.parseResponse(rawPair['response'])
