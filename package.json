@@ -11,9 +11,9 @@
     "curl-trace-parser": "bin/curl-trace-parser"
   },
   "dependencies": {
-    "commander": "1.2.0",
+    "commander": "2.11.0",
     "api-blueprint-http-formatter": "0.0.1",
-    "http-string-parser": "0.0.4"
+    "http-string-parser": "0.0.6"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
