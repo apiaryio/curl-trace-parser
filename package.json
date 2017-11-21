@@ -1,6 +1,6 @@
 {
   "name": "curl-trace-parser",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
   "scripts": {
