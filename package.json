@@ -11,9 +11,9 @@
     "curl-trace-parser": "bin/curl-trace-parser"
   },
   "dependencies": {
-    "commander":  "1.2.0",
+    "commander": "2.11.0",
     "api-blueprint-http-formatter": "0.0.1",
-    "http-string-parser": "0.0.4"
+    "http-string-parser": "0.0.6"
   },
   "devDependencies": {
     "coffee-script": "1.6.3",
@@ -35,9 +35,9 @@
   ],
   "author": "Adam Kliment <adam@apiary.io>",
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/apiaryio/curl-trace-parser.git"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/apiaryio/curl-trace-parser.git"
   },
   "homepage": "https://github.com/apiaryio/curl-trace-parser"
 }
