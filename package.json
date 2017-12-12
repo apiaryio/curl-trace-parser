@@ -3,6 +3,9 @@
   "version": "0.0.9",
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
+  "engines": {
+    "node": ">= 4"
+  },
   "scripts": {
     "test": "scripts/test",
     "prepublish": "scripts/prepublish"
