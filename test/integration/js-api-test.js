@@ -1,14 +1,6 @@
-/* eslint-disable
-    no-shadow,
-    no-unused-vars,
-*/
-// TODO: This file was created by bulk-decaffeinate.
-// Fix any style issues and re-enable lint.
-
 const fs = require('fs');
 
 const { assert } = require('chai');
-const { exec } = require('child_process');
 const parser = require('../../lib/parser');
 
 describe('Javascript API', () =>
@@ -20,7 +12,7 @@ describe('Javascript API', () =>
 
       fs.readFile(traceFilePath, 'utf8', (err, trace) => {
         const parsed = parser.parseToString(trace);
-        fs.readFile(expectedOutputPath, 'utf8', (err, expected) => {
+        fs.readFile(expectedOutputPath, 'utf8', (error, expected) => {
           assert.equal(parsed, expected);
           done();
         });

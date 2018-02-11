@@ -1,9 +1,3 @@
-/* eslint-disable
-    no-return-assign,
-    no-unused-vars,
-*/
-// TODO: This file was created by bulk-decaffeinate.
-// Fix any style issues and re-enable lint.
 const fs = require('fs');
 const { assert } = require('chai');
 const { exec } = require('child_process');
@@ -29,12 +23,12 @@ describe('Command line', () => {
         done();
       });
 
-      cli.on('exit', code => exitStatus = code);
+      cli.on('exit', (code) => { exitStatus = code; });
     });
 
     it('should not return nothing to stderr', () => assert.equal(stderr, ''));
 
-    it('should return with exit code 0', () => {});
+    it('should return with exit code 0', () => assert.equal(exitStatus, 0));
 
     it('should return parsed body to standard output', (done) => {
       const expectedOutputPath = './test/fixtures/get/expected-output';
@@ -63,12 +57,12 @@ describe('Command line', () => {
         done();
       });
 
-      cli.on('exit', code => exitStatus = code);
+      cli.on('exit', (code) => { exitStatus = code; });
     });
 
     it('should not return nothing to stderr', () => assert.equal(stderr, ''));
 
-    it('should return with exit code 0', () => {});
+    it('should return with exit code 0', () => assert.equal(exitStatus, 0));
 
     it('should return parsed body in API Blueprint format to standard output', (done) => {
       const expectedOutputPath = './test/fixtures/post/expected-output.md';
@@ -80,14 +74,12 @@ describe('Command line', () => {
   });
 
   describe('no input on stdin and no options', () => {
-    let stdout = '';
     let stderr = '';
     let exitStatus = '';
 
     before((done) => {
       const cmd = './bin/curl-trace-parser';
       const cli = exec(cmdPrefix + cmd, (error, out, err) => {
-        stdout = out;
         stderr = err;
         if (error) {
           exitStatus = error.code;

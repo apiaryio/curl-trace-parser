@@ -1,10 +1,3 @@
-/* eslint-disable
-    no-return-assign,
-    prefer-destructuring,
-*/
-// TODO: This file was created by bulk-decaffeinate.
-// Fix any style issues and re-enable lint.
-
 const fs = require('fs');
 const { assert } = require('chai');
 const parser = require('../../lib/parser');
@@ -23,7 +16,7 @@ describe('parser module', () => {
   it('has parse() defined', () => assert.isFunction(parser.parse));
 
   describe('parse(string) return', () => {
-    before(() => output = parser.parse(trace));
+    before(() => { output = parser.parse(trace); });
 
     it('is obejct', () => assert.isObject(output));
 
@@ -34,7 +27,7 @@ describe('parser module', () => {
 
       describe('parsed request', () => {
         let request = '';
-        before(() => request = output.request);
+        before(() => { ({ request } = output); });
 
         it('contains multiple lines delimited by CRLF', () => {
           const lines = request.split('\r\n');
@@ -45,7 +38,6 @@ describe('parser module', () => {
           const agentString = 'curl/7.24.0 (x86_64-apple-darwin12.0) libcurl/7.24.0 OpenSSL/0.9.8x zlib/1.2.5';
           assert.include(request, agentString);
         });
-
 
         it('does not contain double LF at the end', () => {
           const outputChars = request.split('');
@@ -59,7 +51,7 @@ describe('parser module', () => {
 
       describe('parsed response', () => {
         let response = '';
-        before(() => response = output.response);
+        before(() => { ({ response } = output); });
 
         it('containt application/json', () => {
           const string = 'application/json';
@@ -77,7 +69,7 @@ describe('parser module', () => {
   it('has parseToString() defined', () => assert.isFunction(parser.parseToString));
 
   describe('parseToString(traceString) return', () => {
-    before(() => output = parser.parseToString(trace));
+    before(() => { output = parser.parseToString(trace); });
 
     it('should have trailing LF as last character to do not brake terminal', () => {
       const outputChars = output.split('');
@@ -99,7 +91,7 @@ describe('parser module', () => {
     });
 
     it("should have all parsed Request lines leaded by '> '", () => {
-      const request = parser.parse(trace).request;
+      const { request } = parser.parse(trace);
 
       let counter = 0;
       for (const line of request.split('\r\n')) {
@@ -110,7 +102,7 @@ describe('parser module', () => {
     });
 
     it("should have all parsed Response lines leaded by '< '", () => {
-      const response = parser.parse(trace).response;
+      const { response } = parser.parse(trace);
 
       let counter = 0;
       for (const line of response.split('\r\n')) {
@@ -142,7 +134,7 @@ describe('parser module', () => {
 
       describe('parsed request', () => {
         let request = '';
-        before(() => request = output.request);
+        before(() => { ({ request } = output); });
 
         it('is a string', () => assert.isString(request));
 
@@ -151,7 +143,7 @@ describe('parser module', () => {
 
       describe('parsed response', () => {
         let response = '';
-        before(() => response = output.response);
+        before(() => { ({ response } = output); });
 
         it('is a string', () => assert.isString(response));
 
