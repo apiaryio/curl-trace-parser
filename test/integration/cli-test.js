@@ -4,11 +4,6 @@
 */
 // TODO: This file was created by bulk-decaffeinate.
 // Fix any style issues and re-enable lint.
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 const fs = require('fs');
 const { assert } = require('chai');
 const { exec } = require('child_process');
@@ -31,21 +26,21 @@ describe('Command line', () => {
         if (error) {
           exitStatus = error.status;
         }
-        return done();
+        done();
       });
 
-      return cli.on('exit', code => exitStatus = code);
+      cli.on('exit', code => exitStatus = code);
     });
 
     it('should not return nothing to stderr', () => assert.equal(stderr, ''));
 
     it('should return with exit code 0', () => {});
 
-    return it('should return parsed body to standard output', (done) => {
+    it('should return parsed body to standard output', (done) => {
       const expectedOutputPath = './test/fixtures/get/expected-output';
-      return fs.readFile(expectedOutputPath, 'utf8', (err, expected) => {
+      fs.readFile(expectedOutputPath, 'utf8', (err, expected) => {
         assert.equal(stdout, expected);
-        return done();
+        done();
       });
     });
   });
@@ -65,26 +60,26 @@ describe('Command line', () => {
         if (error) {
           exitStatus = error.status;
         }
-        return done();
+        done();
       });
 
-      return cli.on('exit', code => exitStatus = code);
+      cli.on('exit', code => exitStatus = code);
     });
 
     it('should not return nothing to stderr', () => assert.equal(stderr, ''));
 
     it('should return with exit code 0', () => {});
 
-    return it('should return parsed body in API Blueprint format to standard output', (done) => {
+    it('should return parsed body in API Blueprint format to standard output', (done) => {
       const expectedOutputPath = './test/fixtures/post/expected-output.md';
-      return fs.readFile(expectedOutputPath, 'utf8', (err, expected) => {
+      fs.readFile(expectedOutputPath, 'utf8', (err, expected) => {
         assert.equal(stdout, expected);
-        return done();
+        done();
       });
     });
   });
 
-  return describe('no input on stdin and no options', () => {
+  describe('no input on stdin and no options', () => {
     let stdout = '';
     let stderr = '';
     let exitStatus = '';
@@ -95,20 +90,20 @@ describe('Command line', () => {
         stdout = out;
         stderr = err;
         if (error) {
-          return exitStatus = error.code;
+          exitStatus = error.code;
         }
       });
 
 
-      return cli.on('exit', (code) => {
+      cli.on('exit', (code) => {
         exitStatus = code;
-        return done();
+        done();
       });
     });
 
 
     it('should exit with status 1', () => assert.equal(exitStatus, 1));
 
-    return it('should return error message to stderr', () => assert.include(stderr, 'No input on stdin'));
+    it('should return error message to stderr', () => assert.include(stderr, 'No input on stdin'));
   });
 });
