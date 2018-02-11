@@ -1,93 +1,109 @@
-fs = require('fs')
-{assert} = require('chai')
-{exec} = require('child_process')
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
+ */
+const fs = require('fs');
+const {assert} = require('chai');
+const {exec} = require('child_process');
 
-cmdPrefix = ''
+const cmdPrefix = '';
 
-describe "Command line", () ->
-  describe "parsing from standard input with --raw", () ->
-    stdout = ""
-    stderr = ""
-    exitStatus = ""
-    
-    before (done) ->
-      cmd = 'cat ./test/fixtures/get/tracefile | ' +
-            './bin/curl-trace-parser --raw'
+describe("Command line", function() { 
+  describe("parsing from standard input with --raw", function() {
+    let stdout = "";
+    let stderr = "";
+    let exitStatus = "";
 
-      cli = exec cmdPrefix + cmd, (error, out, err) -> 
-        stdout = out
-        stderr = err
-        if error
-          exitStatus = error.status
-        done()
+    before(function(done) {
+      const cmd = 'cat ./test/fixtures/get/tracefile | ' +
+            './bin/curl-trace-parser --raw';
 
-      cli.on 'exit', (code) ->        
-        exitStatus = code
-          
-    it "should not return nothing to stderr", () ->
-      assert.equal stderr, ""
+      const cli = exec(cmdPrefix + cmd, function(error, out, err) {
+        stdout = out;
+        stderr = err;
+        if (error) {
+          exitStatus = error.status;
+        }
+        return done();
+      });
 
-    it "should return with exit code 0", () ->
+      return cli.on('exit', code => exitStatus = code);
+    });
 
-    it "should return parsed body to standard output", (done) ->
-      expectedOutputPath = "./test/fixtures/get/expected-output"
-      fs.readFile expectedOutputPath, 'utf8', (err, expected) ->      
-        assert.equal stdout, expected
-        done()
+    it("should not return nothing to stderr", () => assert.equal(stderr, ""));
 
-  describe "parsing from standard input with --blueprint option", () ->
-    stdout = ""
-    stderr = ""
-    exitStatus = ""
-    
-    before (done) ->
-      cmd = 'cat ./test/fixtures/post/tracefile | ' +
-            './bin/curl-trace-parser --blueprint'
+    it("should return with exit code 0", function() {});
 
-      cli = exec cmdPrefix + cmd, (error, out, err) -> 
-        stdout = out
-        stderr = err
-        if error
-          exitStatus = error.status
-        done()
+    return it("should return parsed body to standard output", function(done) {
+      const expectedOutputPath = "./test/fixtures/get/expected-output";
+      return fs.readFile(expectedOutputPath, 'utf8', function(err, expected) {
+        assert.equal(stdout, expected);
+        return done();
+      });
+    });
+  });
 
-      cli.on 'exit', (code) ->        
-        exitStatus = code
+  describe("parsing from standard input with --blueprint option", function() {
+    let stdout = "";
+    let stderr = "";
+    let exitStatus = "";
 
-    it "should not return nothing to stderr", () ->
-      assert.equal stderr, ""
+    before(function(done) {
+      const cmd = 'cat ./test/fixtures/post/tracefile | ' +
+            './bin/curl-trace-parser --blueprint';
 
-    it "should return with exit code 0", () ->
+      const cli = exec(cmdPrefix + cmd, function(error, out, err) {
+        stdout = out;
+        stderr = err;
+        if (error) {
+          exitStatus = error.status;
+        }
+        return done();
+      });
 
-    it "should return parsed body in API Blueprint format to standard output", (done) ->
-      expectedOutputPath = "./test/fixtures/post/expected-output.md"
-      fs.readFile expectedOutputPath, 'utf8', (err, expected) ->      
-        assert.equal stdout, expected
-        done()
+      return cli.on('exit', code => exitStatus = code);
+    });
 
-  describe "no input on stdin and no options", ()-> 
-    
-    stdout = ""
-    stderr = ""
-    exitStatus = ""
-    
-    before (done) ->
-      cmd =  './bin/curl-trace-parser'
-      cli = exec cmdPrefix + cmd, (error, out, err) -> 
-        stdout = out
-        stderr = err
-        if error
-          exitStatus = error.code
-        
+    it("should not return nothing to stderr", () => assert.equal(stderr, ""));
 
-      cli.on 'exit', (code) ->        
-        exitStatus = code
-        done()
-      
-    
-    it "should exit with status 1", () ->
-      assert.equal exitStatus, 1
+    it("should return with exit code 0", function() {});
 
-    it "should return error message to stderr", () ->
-      assert.include stderr, "No input on stdin"  
+    return it("should return parsed body in API Blueprint format to standard output", function(done) {
+      const expectedOutputPath = "./test/fixtures/post/expected-output.md";
+      return fs.readFile(expectedOutputPath, 'utf8', function(err, expected) {
+        assert.equal(stdout, expected);
+        return done();
+      });
+    });
+  });
 
+  return describe("no input on stdin and no options", function(){
+
+    let stdout = "";
+    let stderr = "";
+    let exitStatus = "";
+
+    before(function(done) {
+      const cmd =  './bin/curl-trace-parser';
+      const cli = exec(cmdPrefix + cmd, function(error, out, err) {
+        stdout = out;
+        stderr = err;
+        if (error) {
+          return exitStatus = error.code;
+        }
+      });
+
+
+      return cli.on('exit', function(code) {
+        exitStatus = code;
+        return done();
+      });
+    });
+
+
+    it("should exit with status 1", () => assert.equal(exitStatus, 1));
+
+    return it("should return error message to stderr", () => assert.include(stderr, "No input on stdin"));
+  });
+});
