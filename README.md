@@ -4,14 +4,15 @@
 [![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.svg)](https://travis-ci.org/apiaryio/curl-trace-parser)
 [![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.svg)](https://david-dm.org/apiaryio/curl-trace-parser)
 [![devDependency Status](https://david-dm.org/apiaryio/curl-trace-parser/dev-status.svg)](https://david-dm.org/apiaryio/curl-trace-parser?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/apiaryio/curl-trace-parser.svg)](https://greenkeeper.io/)
 
 
 ## The story
 
-Did you know that you can record raw HTTP communication of [Curl command-line tool](http://curl.haxx.se/docs/manpage.html) with the `--trace` and `--trace-ascii` option? It's the only way I know to get raw HTTP communication without using the [`tcpdump`](http://www.tcpdump.org/) or [`wireshark`](http://www.wireshark.org/). 
+Did you know that you can record raw HTTP communication of [Curl command-line tool](http://curl.haxx.se/docs/manpage.html) with the `--trace` and `--trace-ascii` option? It's the only way I know to get raw HTTP communication without using the [`tcpdump`](http://www.tcpdump.org/) or [`wireshark`](http://www.wireshark.org/).
 For example, this trick is very useful for the proper introspection into HTTP communication of an undocumented RESTful API.
 
-The only glitch is that cURL `--trace` saves data in [its custom format][gist], far from human-friendly, saving chunks as they are being received and splitting them by packets. If you want a human readable form then this parser is what you need. Delivered as a Node.js package. 
+The only glitch is that cURL `--trace` saves data in [its custom format][gist], far from human-friendly, saving chunks as they are being received and splitting them by packets. If you want a human readable form then this parser is what you need. Delivered as a Node.js package.
 
 [gist]: https://gist.github.com/netmilk/6048533
 
@@ -34,7 +35,7 @@ $ npm install -g curl-trace-parser
 ```
 
 ## Record your first trace file
-    
+
 ```bash
 $ curl --trace tracefile --header "Content-Type: application/json" \
 --request POST \
@@ -57,7 +58,7 @@ The output is ASCII representation of a raw [HTTP message][message] with few mod
 - Request and Response is delimited by CR+LF
 - Both Request and Response are terminated by an extra trailing LF
 
-Note: This is little bit tricky because HTTP RFC does not have declared delimiter for Request and Response, for obvious reasons. 
+Note: This is little bit tricky because HTTP RFC does not have declared delimiter for Request and Response, for obvious reasons.
 
 ```bash
 $ cat tracefile | curl-trace-parser --raw
@@ -129,7 +130,7 @@ fs.readFile('./tracefile', 'utf8', function (err,trace) {
 })
 ```
 
-## Output format reverse parser 
+## Output format reverse parser
 
 ```javascript
 var fs = require('fs');
@@ -145,7 +146,7 @@ fs.readFile('./tracefile', 'utf8', function (err,trace) {
 
 `parseToString(traceString)` - parse string with trace to [output format]
 
-`parseBack(outputString)` - parse string with [output format] back to object with raw request an resposne 
+`parseBack(outputString)` - parse string with [output format] back to object with raw request an resposne
 
 
 [output format]: https://github.com/apiaryio/curl-trace-parser#output-format
