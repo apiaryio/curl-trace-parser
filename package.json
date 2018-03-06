@@ -3,6 +3,9 @@
   "version": "0.0.9",
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
+  "engines": {
+    "node": ">= 4"
+  },
   "scripts": {
     "test": "scripts/test",
     "prepublish": "scripts/prepublish"
@@ -16,9 +19,9 @@
     "http-string-parser": "0.0.6"
   },
   "devDependencies": {
-    "coffee-script": "1.6.3",
-    "mocha": "1.11.0",
-    "chai": "1.7.1"
+    "chai": "4.1.2",
+    "coffeescript": "1.12.7",
+    "mocha": "5.0.2"
   },
   "keywords": [
     "curl",
