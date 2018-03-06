@@ -1,8 +1,9 @@
 # The `curl --trace` parser
 
-[![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.png)](https://travis-ci.org/apiaryio/curl-trace-parser)
-[![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.png)](https://david-dm.org/apiaryio/curl-trace-parser)
-[![devDependency Status](https://david-dm.org/apiaryio/curl-trace-parser/dev-status.png)](https://david-dm.org/apiaryio/curl-trace-parser#info=devDependencies)
+[![NPM Version](https://img.shields.io/npm/v/curl-trace-parser.svg)](https://www.npmjs.com/package/curl-trace-parser)
+[![Build Status](https://travis-ci.org/apiaryio/curl-trace-parser.svg)](https://travis-ci.org/apiaryio/curl-trace-parser)
+[![Dependency Status](https://david-dm.org/apiaryio/curl-trace-parser.svg)](https://david-dm.org/apiaryio/curl-trace-parser)
+[![devDependency Status](https://david-dm.org/apiaryio/curl-trace-parser/dev-status.svg)](https://david-dm.org/apiaryio/curl-trace-parser?type=dev)
 
 
 ## The story
