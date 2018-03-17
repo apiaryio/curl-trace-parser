@@ -1,6 +1,6 @@
 fs = require 'fs'
 assert = require('chai').assert
-parser = require '../../src/parser'
+parser = require '../../lib/parser'
 
 describe 'parser module', () ->
   output = ""
