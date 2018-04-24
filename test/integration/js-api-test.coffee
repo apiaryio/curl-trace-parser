@@ -2,7 +2,7 @@ fs = require 'fs'
 
 {assert} = require('chai')
 {exec} = require('child_process')
-parser = require('../../src/parser')
+parser = require('../../lib/parser')
 
 describe "Javascript API", () ->
   describe "parsing from file", () ->

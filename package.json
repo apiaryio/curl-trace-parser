@@ -4,7 +4,7 @@
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6"
   },
   "scripts": {
     "test": "scripts/test",

@@ -5,14 +5,6 @@ fs = require('fs')
 cmdPrefix = ''
 
 describe "Command line", () ->
-  before (done) ->
-    #CLI is linked with native JS in /lib so re-compile Coffee /src to /lib
-    cmd = './scripts/build'
-    cli = exec cmdPrefix + cmd, (error, out, err) ->
-      if error
-        done error
-      done()
- 
   describe "parsing from standard input with --raw", () ->
     stdout = ""
     stderr = ""
