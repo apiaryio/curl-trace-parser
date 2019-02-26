@@ -24,7 +24,7 @@
     "eslint": "4.19.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-import": "2.9.0",
-    "mocha": "6.0.1"
+    "mocha": "6.0.2"
   },
   "keywords": [
     "curl",
