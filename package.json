@@ -4,7 +4,7 @@
   "description": "Parse curl --trace option output to raw HTTP message",
   "main": "lib/parser.js",
   "engines": {
-    "node": ">= 6"
+    "node": ">= 8"
   },
   "scripts": {
     "lint": "eslint src/ test/ bin/",
