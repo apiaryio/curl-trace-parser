@@ -20,9 +20,9 @@
     "http-string-parser": "0.0.6"
   },
   "devDependencies": {
-    "chai": "4.1.2",
-    "eslint": "4.19.0",
-    "eslint-config-airbnb-base": "12.1.0",
+    "chai": "4.2.0",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.17.3",
     "mocha": "6.1.4"
   },
